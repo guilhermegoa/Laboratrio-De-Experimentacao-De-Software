@@ -19,13 +19,17 @@ Estudar as principais características de sistemas populares open-source. Dessa 
 ## Como testar
 
 - Rodar comando para inciar ambiente virtual e acessa-lo.
+- 
     ``python3 - venv .venv``
+    
     ``source .venv/bin/activate``
 
 - Instalar bibliotecas usadas.
+
     ``python -m pip install -r requirements.txt``
 
 - Para rodar o script
+
     ``python scripts/<SCRIPT_NAME>``
 
 ***Obs.:*** é necessário ter um [Personal access tokens](https://docs.github.com/pt/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
