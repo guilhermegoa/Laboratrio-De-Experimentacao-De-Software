@@ -1,2 +1,2 @@
-# Laborat-rio-De-Experimenta-o-De-Software
+# Laboratrio-De-Experimenta-De-Software
 Repositório para os trabalho de laboratório do 6° período
