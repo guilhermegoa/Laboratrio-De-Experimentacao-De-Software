@@ -5,6 +5,7 @@
 ## Autores
 
 **Arthur Rocha Amaral**
+
 **Guilherme Oliveira Antônio**
 
 ---
