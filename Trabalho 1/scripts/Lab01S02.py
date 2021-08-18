@@ -1,4 +1,20 @@
+# Arthur Rocha Amaral
+# Guilherme Oliveira Antônio
+# 
 # Lab01S02: Paginação (consulta 1000 repositórios) + dados em arquivo .csv
+# 
+# Rodar comando para inciar ambiente virtual e acessa-lo.
+#    python3 - venv .venv
+#    source .venv/bin/activate
+# 
+# Instalar biblioteca usada.
+#    python -m pip install --pre gql[all]
+# 
+# Colocar um novo token gerado pelo github
+# https://docs.github.com/pt/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+# 
+# Rodar
+#    pytthon scripts/Lab01S02.py -token TOKEN
 
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
