@@ -3,10 +3,15 @@
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
 import os
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-token', help='token help', required=True)
+args = parser.parse_args()
 
 def Lab01S02():
     url = 'https://api.github.com/graphql'
-    token = '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'
+    token = args.token
 
     headers = {'Authorization': f'bearer {token}'}
 
