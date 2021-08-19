@@ -20,10 +20,16 @@ from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
 import os
 import argparse
+import json
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-token', help='token help', required=True)
 args = parser.parse_args()
+
+if not os.path.exists('files'): 
+    os.mkdir('files')
+elif os.path.exists('files/Lab01S02.csv') :
+    os.remove('files/Lab01S02.csv')
 
 def Lab01S02():
     url = 'https://api.github.com/graphql'
@@ -37,13 +43,30 @@ def Lab01S02():
 
     query = gql(
         """
-        query {
-        search(type: REPOSITORY, first: 100, query: "stars:>0") {
+        query ($after: String) {
+            search(type: REPOSITORY, first: 100, query: "stars:>0", after: $after) {
                 nodes {
-                ... on Repository {
-                        name
-                        url
-                        stargazerCount
+                    ... on Repository {
+                            nameWithOwner
+                            stargazerCount
+                            createdAt
+                            updatedAt
+                            url
+                        releases {
+                            totalCount
+                        }
+                        open: issues (states: OPEN) {
+                            totalCount
+                        }
+                        closed: issues (states: CLOSED){
+                            totalCount
+                        }
+                        pullRequests(states: MERGED) {
+                            totalCount
+                        }
+                        primaryLanguage {
+                            name
+                        }
                     }
                 }
                 pageInfo {
@@ -55,57 +78,40 @@ def Lab01S02():
         """
     )
 
-    if not os.path.exists('files'): 
-        os.mkdir('files')
-    elif os.path.exists('files/Lab01S02.csv') :
-        os.remove('files/Lab01S02.csv')
+    params = json.dumps({"after":None})
 
-    result = session.execute(query)
+    result = session.execute(query, variable_values=params)
 
     count = 0
 
-    while result['search']['pageInfo']['hasNextPage'] and count < 12:
+    while result['search']['pageInfo']['hasNextPage'] and count < 10:
         print(f'{count} - Requesting...')
         
         count+=1
 
         saveOnFile(result['search']['nodes'])
 
-        query = gql(
-            """
-            query ($after: String!) {
-                search(type: REPOSITORY, first: 100, query: "stars:>0", after: $after) {
-                        nodes {
-                        ... on Repository {
-                                name
-                                url
-                                stargazerCount
-                            }
-                        }
-                        pageInfo {
-                            endCursor
-                            hasNextPage
-                        }
-                    }
-                }
-            """
-        )   
-
-        params = { "after": result['search']['pageInfo']['endCursor'] }
+        params = json.dumps({"after":result['search']['pageInfo']['endCursor']})
 
         result = session.execute(query, variable_values=params)
-
 
 def saveOnFile(repos):
     
     file = open('files/Lab01S02.csv', 'a')
 
     for repo in repos:
-        name = repo['name']
+        nameWithOwner = repo['nameWithOwner']
         url = repo['url']
         star = repo['stargazerCount']
+        createdAt = repo['createdAt']
+        updatedAt = repo['updatedAt']
+        releases = repo['releases']['totalCount']
+        issuesOpen = repo['open']['totalCount']
+        issuesClosed = repo['closed']['totalCount']
+        pullRequests = repo['pullRequests']['totalCount']
+        primaryLanguage = repo['primaryLanguage'] != None and repo['primaryLanguage']['name'] or None
 
-        file.write(f'{name};{url};{star}\n')
+        file.write(f'{nameWithOwner};{url};{star};{createdAt};{updatedAt};{releases};{issuesOpen};{issuesClosed};{pullRequests};{primaryLanguage}\n')
     
     file.close()
 

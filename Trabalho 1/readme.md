@@ -30,7 +30,7 @@ Estudar as principais características de sistemas populares open-source. Dessa 
 
 - Para rodar o script
 
-    ``python scripts/<SCRIPT_NAME>``
+    ``python scripts/<SCRIPT_NAME> -token TOKEN``
 
 ***Obs.:*** é necessário ter um [Personal access tokens](https://docs.github.com/pt/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
  do github. Para que funcione é só colocar o token dentro do script na variavel token.
