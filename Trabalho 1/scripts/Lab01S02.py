@@ -1,18 +1,18 @@
 # Arthur Rocha Amaral
 # Guilherme Oliveira Antônio
-# 
+#
 # Lab01S02: Paginação (consulta 1000 repositórios) + dados em arquivo .csv
-# 
+#
 # Rodar comando para inciar ambiente virtual e acessa-lo.
 #    python3 - venv .venv
 #    source .venv/bin/activate
-# 
+#
 # Instalar biblioteca usada.
 #    python -m pip install --pre gql[all]
-# 
+#
 # Colocar um novo token gerado pelo github
 # https://docs.github.com/pt/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
-# 
+#
 # Rodar
 #    pytthon scripts/Lab01S02.py -token TOKEN
 
@@ -26,10 +26,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-token', help='token help', required=True)
 args = parser.parse_args()
 
-if not os.path.exists('files'): 
+if not os.path.exists('files'):
     os.mkdir('files')
-elif os.path.exists('files/Lab01S02.csv') :
+elif os.path.exists('files/Lab01S02.csv'):
     os.remove('files/Lab01S02.csv')
+
 
 def Lab01S02():
     url = 'https://api.github.com/graphql'
@@ -78,25 +79,28 @@ def Lab01S02():
         """
     )
 
-    params = json.dumps({"after":None})
-
-    result = session.execute(query, variable_values=params)
-
     count = 0
+    afterKey = None
+    repos = []
 
-    while result['search']['pageInfo']['hasNextPage'] and count < 10:
-        print(f'{count} - Requesting...')
-        
-        count+=1
+    while count < 10:
+        print(f'Requesting page {count + 1}')
 
-        saveOnFile(result['search']['nodes'])
-
-        params = json.dumps({"after":result['search']['pageInfo']['endCursor']})
-
+        params = json.dumps({"after": afterKey})
         result = session.execute(query, variable_values=params)
 
+        count += 1
+        afterKey = result['search']['pageInfo']['endCursor']
+        repos += result['search']['nodes']
+
+        if afterKey == None:
+            break
+
+    saveOnFile(repos)
+
+
 def saveOnFile(repos):
-    
+
     file = open('files/Lab01S02.csv', 'a')
 
     for repo in repos:
@@ -111,8 +115,10 @@ def saveOnFile(repos):
         pullRequests = repo['pullRequests']['totalCount']
         primaryLanguage = repo['primaryLanguage'] != None and repo['primaryLanguage']['name'] or None
 
-        file.write(f'{nameWithOwner};{url};{star};{createdAt};{updatedAt};{releases};{issuesOpen};{issuesClosed};{pullRequests};{primaryLanguage}\n')
-    
+        file.write(
+            f'{nameWithOwner};{url};{star};{createdAt};{updatedAt};{releases};{issuesOpen};{issuesClosed};{pullRequests};{primaryLanguage}\n')
+
     file.close()
+
 
 Lab01S02()
