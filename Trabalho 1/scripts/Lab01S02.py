@@ -26,11 +26,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-token', help='token help', required=True)
 args = parser.parse_args()
 
-if not os.path.exists('files'):
-    os.mkdir('files')
-elif os.path.exists('files/Lab01S02.csv'):
-    os.remove('files/Lab01S02.csv')
-
 
 def Lab01S02():
     url = 'https://api.github.com/graphql'
@@ -100,8 +95,15 @@ def Lab01S02():
 
 
 def saveOnFile(repos):
+    if not os.path.exists('files'):
+        os.mkdir('files')
+    elif os.path.exists('files/Lab01S02.csv'):
+        os.remove('files/Lab01S02.csv')
 
     file = open('files/Lab01S02.csv', 'a')
+
+    file.write(
+        'nameWithOwner;url;star;createdAt;updatedAt;releases;issuesOpen;issuesClosed;pullRequests;primaryLanguage\n')
 
     for repo in repos:
         nameWithOwner = repo['nameWithOwner']
