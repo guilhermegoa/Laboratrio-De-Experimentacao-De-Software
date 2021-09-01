@@ -41,7 +41,7 @@ def Lab01S02():
     query = gql(
         """
         query ($after: String, $pageSize: Int) {
-            search(type: REPOSITORY, first: $pageSize, query: "stars:>0", after: $after) {
+            search(type: REPOSITORY, first: $pageSize, query: "stars:>0 sort:stars-desc", after: $after) {
                 nodes {
                     ... on Repository {
                             nameWithOwner
@@ -97,7 +97,11 @@ def Lab01S02():
     saveOnFile(repos)
 
 
-def saveOnFile(repos):
+def getSortKey(e):
+    return e['nameWithOwner']
+
+
+def saveOnFile(repos: list):
     if not os.path.exists('files'):
         os.mkdir('files')
     elif os.path.exists('files/Lab01S02.csv'):
@@ -110,36 +114,43 @@ def saveOnFile(repos):
 
     # errorCount = 0
 
+    percent_formatter = "{0:.2f}"
     for repo in repos:
         # try:
-        nameWithOwner = repo['nameWithOwner']
-        url = repo['url']
-        star = repo['stargazerCount']
 
-        today = datetime.now()
+        if repos.count(repo) > 1:
+            repos.remove(repo)
+        else:
+            nameWithOwner = repo['nameWithOwner']
+            url = repo['url']
+            star = repo['stargazerCount']
 
-        createdAt = datetime.strptime(
-            repo['createdAt'], "%Y-%m-%dT%H:%M:%SZ")
+            today = datetime.now()
 
-        updatedAt = datetime.strptime(
-            repo['updatedAt'], "%Y-%m-%dT%H:%M:%SZ")
+            createdAt = datetime.strptime(
+                repo['createdAt'], "%Y-%m-%dT%H:%M:%SZ")
 
-        releases = repo['releases']['totalCount']
+            updatedAt = datetime.strptime(
+                repo['updatedAt'], "%Y-%m-%dT%H:%M:%SZ")
 
-        issuesOpen: int = repo['open']['totalCount']
-        issuesClosed: int = repo['closed']['totalCount']
-        issuesProportion = (
-            issuesOpen/issuesClosed) if issuesClosed > 0 else None
+            releases = repo['releases']['totalCount']
 
-        pullRequests = repo['pullRequests']['totalCount']
-        primaryLanguage = repo['primaryLanguage'] != None and repo['primaryLanguage']['name'] or None
+            issuesOpen: int = repo['open']['totalCount']
+            issuesClosed: int = repo['closed']['totalCount']
+            totalIssues: int = (issuesClosed+issuesOpen)
+            issuesProportion = percent_formatter.format(
+                issuesClosed/totalIssues) if totalIssues > 0.0 else -1.0
 
-        file.write(
-            f'{nameWithOwner};{url};{star};{(today-createdAt).days};{(today-updatedAt).days};{releases};{issuesOpen};{issuesClosed};{issuesProportion};{pullRequests};{primaryLanguage}\n')
+            pullRequests = repo['pullRequests']['totalCount']
+            primaryLanguage = repo['primaryLanguage'] != None and repo['primaryLanguage']['name'] or None
+
+            file.write(
+                f'{nameWithOwner};{url};{star};{(today-createdAt).days};{(today-updatedAt).days};{releases};{issuesOpen};{issuesClosed};{issuesProportion};{pullRequests};{primaryLanguage}\n')
         # except:
         #     errorCount += 1
         #     print(
         #         f'Error when try tho register the repository {nameWithOwner} of {errorCount} errors')
+    print(f"Total items: {repos.__len__()}")
     file.close()
 
 
