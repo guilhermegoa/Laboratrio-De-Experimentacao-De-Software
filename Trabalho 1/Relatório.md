@@ -24,7 +24,7 @@ Após dados filtrados, mapeados e armazenados, utilizamos esses para criar os gr
 
 ## Discussão/Hipoteses/Valores obtidos
 
-- RQ Q1 - Sistemas populares são maduros/antigos?
+#### RQ Q1 - Sistemas populares são maduros/antigos?
 
   - **Hipótese**: Os repotitórios com mais estrelas tendem a ter mais de 4 anos de existência.
   - **Metodologia**: Para a análise desse requisito, a idéia é verificar a quantidade de tempo desde que o projeto foi criado, assim sera obtido qual é a mediana da idade dos repositórios.
@@ -34,7 +34,7 @@ Após dados filtrados, mapeados e armazenados, utilizamos esses para criar os gr
 
   - **Discussão sobre o que era esperado e o resultado obitido**: A hipótese consistia em que os repositórios mas populares tivessem em torno de somente 4 anos de exitência, e após analise dos resultados, é capaz de perceber que os repositórios com mais estrelas no GitHub tendem a ter 6 anos e 5 meses, uma idade consideravelmente longa para um projeto. Por tanto, consta que os projetos mais populares são sim projetos relativamente velhos.
 
-- RQ Q2 - Sistemas populares recebem muita contribuição externa?
+#### RQ Q2 - Sistemas populares recebem muita contribuição externa?
 
   - **Hipótese**: Repositórios populares tendem a ter valor de mediano de 1000 pull requestes.
   - **Metodologia**: Para análise desse requisito, a idéia é verificar a quantidade de Pull Requests feitos pela comunidade, afim de saber qual o valor mediano de quantidades de Pull Requestes completados, assim saberemos como é a contribuição nos projetos populares.
@@ -44,7 +44,7 @@ Após dados filtrados, mapeados e armazenados, utilizamos esses para criar os gr
 
   - **Discussão sobre o que era esperado e o resultado obitido**: O reultado obitido mostra que e os repositórios recebem um valor considerávelmente baixo de contribuições. Ainda mais comparando com o dado da Q1, a idade desses repositórios é muito alta para somente essa quantidade de PRs.
 
-- RQ Q3 - Sistemas populares lançam releases com frequência?
+#### RQ Q3 - Sistemas populares lançam releases com frequência?
 
   - **Hipótese**: Repositórios populares tendem a lançar em media 100 Releases durante seu tempo de vida.
   - **Metodologia**: Para análise desse requisito, a idéia é verificar a quantidade de Releases feitas, assim conhecendo como é a frenquência de novas versões nos projetos populares.
@@ -52,9 +52,9 @@ Após dados filtrados, mapeados e armazenados, utilizamos esses para criar os gr
 
     <div style="text-align: center"><img src="assets/Q3.png" alt="RQ Q3 Gráfico"></div>
 
-  - **Discussão sobre o que era esperado e o resultado obitido**: Como obeservado no resultado, os repositórios populares de tem uma frequência mediana de 16 releases no seu tempo de vida. Porém, deve se considerar a grande quantidade de projetos que não tem releases lançadas, isso afeta diretamente o dados a ser analisado. Assim, pode se considerar esse requito de análise fraco/falho, pois os projetos com 0 releases podem ter seus versionamento diferente do que é previsto pelo GitHub.
+  - **Discussão sobre o que era esperado e o resultado obitido**: Como obeservado no resultado, os repositórios populares de tem uma frequência mediana de 16 releases no seu tempo de vida. Porém, deve se considerar a grande quantidade de projetos que não tem releases lançadas, isso afeta diretamente o dados a ser analisado. Assim, pode-se considerar esse requito de análise fraco/falho, pois os projetos com 0 releases podem ter seus versionamento diferente do que é previsto pelo GitHub.
 
-- RQ Q4 - Sistemas populares são atualizados com frequência?
+#### RQ Q4 - Sistemas populares são atualizados com frequência?
 
   - **Hipótese**: Repositórios populares tendem a ficar sem atualização durante 5 dias.
   - **Metodologia**: Para análise desse requisito, a idéia é verificar a quantidade de dias desde a última atualização de cada repositório, assim conhecendo como é a frenquência de atualização dos projetos populares.
@@ -64,29 +64,27 @@ Após dados filtrados, mapeados e armazenados, utilizamos esses para criar os gr
 
   - **Discussão sobre o que era esperado e o resultado obitido**: Com o resultado obitdo é possível perceber que os repositórios populares são atualizados diariamente em sua grande maioria, poucos repositórios tiveram mais de 1 dia desde sua última avaliação.
 
-- RQ Q5 - Sistemas populares são escritos nas linguagens mais populares?
+#### RQ Q5 - Sistemas populares são escritos nas linguagens mais populares?
 
   - **Hipótese**: Agrupando os repositórios pelas suas linguagens primárias e observando o total de estrelas, as 10 linguangens definidas pelo OctoVerse 2021 como as linguagens mais populares, estaram entre as 10 linguagens com mais estrelas entre os repositórios mais populares do GitHub.
   - **Metodologia**: Para análise desse requisito, a idéia é verificar as linguagens primárias dos projetos populares, assim fazendo um comparação com as linguagens mais populares indicadas no OctoVerse 2021.
-  - **Resultados**: Na comparação dos repositórios mais pipulares e as linguagens mais populares, foi encontrado 7 de 10 lingugens. Dessa forma pode se dizer que os repositórios populares estão utilizando as linguagens mais famosas do GitHub.
-
-  javaScript; python; java; typeScript; go; C++; C; shell; Php; Swift
+  - **Resultados**: Na comparação dos repositórios mais pipulares e as linguagens mais populares, foi encontrado 7 de 10 lingugens. Dessa forma pode-se dizer que os repositórios populares estão utilizando as linguagens mais famosas do GitHub.
 
     <div style="text-align: center"><img src="assets/Q5.png" alt="RQ Q5 Gráfico"></div>
 
   - **Discussão sobre o que era esperado e o resultado obitido**: Era esperado que entre os repositórios mais populares tivessem as linguagens: [JavaScript, Python, Java, TypeScript, C#, PHP, C++, C, Shell, Ruby] mas o resultado encontrado mostrou estar bem alinhado com o esperado, somente que algumas linguagens apesar de serem muito usadas em outros repositórios, não são utilizadas na mesma proporção entre os repositórios mais populares. Podemos também interretar que algumas linguagens favoritas da comunidade, não são necessariamente linguagens usadas por grandes projetos.
 
-- RQ Q6 - Sistemas populares possuem um alto percentual de issues fechadas?
+#### RQ Q6 - Sistemas populares possuem um alto percentual de issues fechadas?
 
-  - **Hipótese**: 
-  - **Metodologia**: 
-  - **Resultados**: 
+  - **Hipótese**: Repositótios populares tem um porcetagem maior que 60% na relação de issues fechadas pelo total de issues.
+  - **Metodologia**: Para abálise desse requisito, a idéia é veficar o total de issues e fazer uma comparação com as issues fechadas.
+  - **Resultados**: O resultado obtido mostra que entre os repositórios populares a mediana de issues fechdas e de 0,87. Dessa forma, pode-se concluir que aporcetagem de media da relação de issues fechadas e o total de issues é de 87%, assim é possivel dizesr que os projetos populares tem um mediana de respostas as issues grande, mostrando o quanto ativo é a comunidade.
 
     <div style="text-align: center"><img src="assets/Q6.png" alt="RQ Q6 Gráfico"></div>
 
-  - **Discussão sobre o que era esperado e o resultado obitido**:
+  - **Discussão sobre o que era esperado e o resultado obitido**: O esperado na hipótese para a análise desse requisito era um pordentagem maior que 60%, o que foi obtido com sucesso. Desse modo, pode-se dizer que a comunidade dos porjetos são ativa, tendo um engajamento significante, visto que a porcentagem encontrada na relação e de 87%. Portanto, pode se dizer que os repositórios analisados tem um a comunidade engajado, onde os usuários discutem grande parte da issues que são abertas.
 
-- RQ Q7 - Sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência?
+#### RQ Q7 - Sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência?
 
   - **Hipótese**: 
   - **Metodologia**: 
