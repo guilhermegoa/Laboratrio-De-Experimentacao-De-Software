@@ -81,8 +81,8 @@ def FetchJavaRepos(token):
     count = 0
     after_key = None
     repos = []
-    page_size = 1
-    page_quantity = 1
+    page_size = 100
+    page_quantity = 10
     has_next_page = True
 
     while count < page_quantity and has_next_page:
