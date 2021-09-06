@@ -4,7 +4,7 @@
 # Lab02S01: Consulta graphql para 100 repositórios + requisição automática
 #
 # Rodar comando para inciar ambiente virtual e acessa-lo.
-#    python3 - venv .venv
+#    python3 -m venv .venv
 #    source .venv/bin/activate
 #
 # Instalar biblioteca usada.
@@ -14,7 +14,7 @@
 # https://docs.github.com/pt/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
 #
 # Rodar
-#    pytthon scripts/Lab02S01.py --token TOKEN
+#    python scripts/Lab02S01.py --token TOKEN --should-fetch true --should-analyse true
 
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
@@ -33,7 +33,7 @@ parser.add_argument('--should-analyse',
 args = parser.parse_args()
 
 analyseDataFilePath = 'files/analyse-data.txt'
-repositoryFilePath = 'files/polular-java-repos.csv'
+repositoryFilePath = 'files/popular-java-repos.csv'
 
 
 def FetchJavaRepos(token):
@@ -161,8 +161,10 @@ def AnalyseCode():
 
     while actualLine < repositories.__len__():
         repoData = repositories[actualLine].split(';')
-        repositoryName = repoData[0]
+        repositoryName = repoData[0].split('/')[1]
         repositoryUrl = repoData[1]
+
+        # Download repository
         subprocess.call(
             [
                 'sh',
@@ -171,6 +173,16 @@ def AnalyseCode():
                 repositoryUrl
             ]
         )
+        
+        # Analyse repository
+        subprocess.call(
+            [
+                'sh',
+                'scripts/analyse-repository.sh',
+                repositoryName
+            ]
+        )
+
         try:
             analyseDataFile = open(analyseDataFilePath, 'w')
             analyseDataFile.write(
