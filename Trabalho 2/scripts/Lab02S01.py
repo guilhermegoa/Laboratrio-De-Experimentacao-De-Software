@@ -34,7 +34,7 @@ args = parser.parse_args()
 
 analyseDataFilePath = 'files/analyse-data.txt'
 repositoryFilePath = 'files/popular-java-repos.csv'
-
+analysedReposFilePath = 'files/analysed-java-repos.csv'
 
 def FetchJavaRepos(token):
     url = 'https://api.github.com/graphql'
@@ -135,7 +135,7 @@ def SaveOnFile(repos: list):
 def AnalyseCode():
     if not os.path.exists(repositoryFilePath):
         print('Repository path not exist')
-        return
+        return  
 
     lastRepoReadLineNumber = 0
     lastRepoReadLineNumberKey = 'lastRepoReadLineNumberKey'
@@ -165,23 +165,25 @@ def AnalyseCode():
         repositoryUrl = repoData[1]
 
         # Download repository
-        subprocess.call(
-            [
-                'sh',
-                'scripts/get-repository-metrics.sh',
-                repositoryName,
-                repositoryUrl
-            ]
-        )
+        # subprocess.call(
+        #     [
+        #         'sh',
+        #         'scripts/get-repository-metrics.sh',
+        #         repositoryName,
+        #         repositoryUrl
+        #     ]
+        # )
         
         # Analyse repository
-        subprocess.call(
-            [
-                'sh',
-                'scripts/analyse-repository.sh',
-                repositoryName
-            ]
-        )
+        # subprocess.call(
+        #     [
+        #         'sh',
+        #         'scripts/analyse-repository.sh',
+        #         repositoryName
+        #     ]
+        # )
+
+        AnalysedJavaRepo(repoData)
 
         try:
             analyseDataFile = open(analyseDataFilePath, 'w')
@@ -194,6 +196,38 @@ def AnalyseCode():
 
     os.remove(analyseDataFilePath)
     print("All repositories analysed")
+
+def AnalysedJavaRepo(repoData):
+    analysedReposFile = open(analysedReposFilePath, 'a') 
+    repositoryName = repoData[0].split('/')[1]
+
+    cboPositionClassFile = 3
+    ditPositionClassFile = 8
+    lcomPosintionClassFile = 12
+
+    cboCount = 0
+    ditCount = 0
+    lcomCount = 0
+
+    classReposFile = open('files/analyses/' + repositoryName + '/class.csv')
+    classRepos = classReposFile.readlines(0) if classReposFile.readable() else []
+    sizeClassrepos = classRepos.__len__()
+
+    del classRepos[0]
+
+    for line in classRepos:
+        lineArray = line.split(',')
+        cboCount += int(lineArray[cboPositionClassFile])
+        ditCount += int(lineArray[ditPositionClassFile])
+        lcomCount += float(lineArray[lcomPosintionClassFile])
+
+    cboResult = (cboCount != 0 and type(cboCount) == int) and cboCount/sizeClassrepos or 0 
+    ditResult = (ditCount != 0 and type(ditCount) == int) and ditCount/sizeClassrepos or 0 
+    lcomResult = (lcomCount != 0 and type(lcomCount) == float) and lcomCount/sizeClassrepos or 0 
+
+    for data in repoData:
+        analysedReposFile.write(f'{data};')
+    analysedReposFile.write(f'{cboResult};{ditResult};{lcomResult}\n')
 
 
 if args.should_fetch == 'true':
