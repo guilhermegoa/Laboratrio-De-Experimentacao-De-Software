@@ -36,6 +36,7 @@ analyseDataFilePath = 'files/analyse-data.txt'
 repositoryFilePath = 'files/popular-java-repos.csv'
 analysedReposFilePath = 'files/analysed-java-repos.csv'
 
+
 def FetchJavaRepos(token):
     url = 'https://api.github.com/graphql'
     headers = {'Authorization': f'bearer {token}'}
@@ -135,7 +136,7 @@ def SaveOnFile(repos: list):
 def AnalyseCode():
     if not os.path.exists(repositoryFilePath):
         print('Repository path not exist')
-        return  
+        return
 
     lastRepoReadLineNumber = 0
     lastRepoReadLineNumberKey = 'lastRepoReadLineNumberKey'
@@ -173,7 +174,7 @@ def AnalyseCode():
         #         repositoryUrl
         #     ]
         # )
-        
+
         # Analyse repository
         # subprocess.call(
         #     [
@@ -197,8 +198,9 @@ def AnalyseCode():
     os.remove(analyseDataFilePath)
     print("All repositories analysed")
 
+
 def AnalysedJavaRepo(repoData):
-    analysedReposFile = open(analysedReposFilePath, 'a') 
+    analysedReposFile = open(analysedReposFilePath, 'a')
     repositoryName = repoData[0].split('/')[1]
 
     cboPositionClassFile = 3
@@ -209,25 +211,39 @@ def AnalysedJavaRepo(repoData):
     ditCount = 0
     lcomCount = 0
 
-    classReposFile = open('files/analyses/' + repositoryName + '/class.csv')
-    classRepos = classReposFile.readlines(0) if classReposFile.readable() else []
-    sizeClassrepos = classRepos.__len__()
+    try:
+        classReposFile = open('files/analyses/' +
+                              repositoryName + '/class.csv')
+        classRepos = classReposFile.readlines(
+            0) if classReposFile.readable() else []
+        sizeClassrepos = classRepos.__len__()
 
-    del classRepos[0]
+        del classRepos[0]
 
-    for line in classRepos:
-        lineArray = line.split(',')
-        cboCount += int(lineArray[cboPositionClassFile])
-        ditCount += int(lineArray[ditPositionClassFile])
-        lcomCount += float(lineArray[lcomPosintionClassFile])
+        for line in classRepos:
+            lineArray = line.split(',')
+            cboCount += int(lineArray[cboPositionClassFile])
+            ditCount += int(lineArray[ditPositionClassFile])
+            lcomCount += float(lineArray[lcomPosintionClassFile])
 
-    cboResult = (cboCount != 0 and type(cboCount) == int) and cboCount/sizeClassrepos or 0 
-    ditResult = (ditCount != 0 and type(ditCount) == int) and ditCount/sizeClassrepos or 0 
-    lcomResult = (lcomCount != 0 and type(lcomCount) == float) and lcomCount/sizeClassrepos or 0 
+        cboResult = (cboCount != 0 and type(cboCount) ==
+                     int) and cboCount/sizeClassrepos or 0
+        ditResult = (ditCount != 0 and type(ditCount) ==
+                     int) and ditCount/sizeClassrepos or 0
+        lcomResult = (lcomCount != 0 and type(lcomCount) ==
+                      float) and lcomCount/sizeClassrepos or 0
 
-    for data in repoData:
-        analysedReposFile.write(f'{data};')
-    analysedReposFile.write(f'{cboResult};{ditResult};{lcomResult}\n')
+        lineData = ""
+        for data in repoData:
+            lineData += f'{data};'
+        lineData = lineData.split('\n')[0]
+        analysedReposFile.write(
+            f'{lineData};{cboResult};{ditResult};{lcomResult}\n')
+
+        classReposFile.flush()
+        classReposFile.close()
+    except:
+        print(f'Not found \'files/analyses/{repositoryName}/class.csv\' file')
 
 
 if args.should_fetch == 'true':
