@@ -23,6 +23,7 @@ import os
 import argparse
 import json
 import subprocess
+import math
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--token', help='token help', required=True)
@@ -173,23 +174,23 @@ def AnalyseCode():
         repositoryUrl = repoData[1]
 
         # Download repository
-        # subprocess.call(
-        #     [
-        #         'sh',
-        #         'scripts/get-repository-metrics.sh',
-        #         repositoryName,
-        #         repositoryUrl
-        #     ]
-        # )
+        subprocess.call(
+            [
+                'sh',
+                'scripts/get-repository-metrics.sh',
+                repositoryName,
+                repositoryUrl
+            ]
+        )
 
         # Analyse repository
-        # subprocess.call(
-        #     [
-        #         'sh',
-        #         'scripts/analyse-repository.sh',
-        #         repositoryName
-        #     ]
-        # )
+        subprocess.call(
+            [
+                'sh',
+                'scripts/analyse-repository.sh',
+                repositoryName
+            ]
+        )
 
         AnalysedJavaRepo(repoData)
 
@@ -223,29 +224,44 @@ def AnalysedJavaRepo(repoData):
                               repositoryName + '/class.csv')
         classRepos = classReposFile.readlines(
             0) if classReposFile.readable() else []
-        sizeClassrepos = classRepos.__len__()
+        sizeClassReposCBO = classRepos.__len__()
+        sizeClassReposDIT = classRepos.__len__()
 
         del classRepos[0]
 
         for line in classRepos:
             lineArray = line.split(',')
-            cboCount += int(lineArray[cboPositionClassFile])
-            ditCount += int(lineArray[ditPositionClassFile])
-            lcomCount += float(lineArray[lcomPosintionClassFile])
+
+            cbo = int(lineArray[cboPositionClassFile])
+            if not math.isnan(cboCount):
+                cboCount += cbo
+            else:
+                sizeClassReposCBO -= 1
+
+            dit = int(lineArray[ditPositionClassFile])
+            if not math.isnan(ditCount):
+                ditCount += dit
+            else:
+                sizeClassReposDIT -= 1
+
+            classLcom = float(lineArray[lcomPosintionClassFile])
+            if not math.isnan(classLcom):
+                lcomCount += float(lineArray[lcomPosintionClassFile])
+            else:
+                print("")
 
         cboResult = (cboCount != 0 and type(cboCount) ==
-                     int) and cboCount/sizeClassrepos or 0
+                     int) and cboCount/sizeClassReposCBO or 0
+
         ditResult = (ditCount != 0 and type(ditCount) ==
-                     int) and ditCount/sizeClassrepos or 0
-        lcomResult = (lcomCount != 0 and type(lcomCount) ==
-                      float) and lcomCount/sizeClassrepos or 0
+                     int) and ditCount/sizeClassReposDIT or 0
 
         lineData = ""
         for data in repoData:
             lineData += f'{data};'
         lineData = lineData.split('\n')[0]
         analysedReposFile.write(
-            f'{lineData};{cboResult};{ditResult};{lcomResult}\n')
+            f'{lineData};{cboResult};{ditResult};{lcomCount}\n')
 
         classReposFile.flush()
         classReposFile.close()
