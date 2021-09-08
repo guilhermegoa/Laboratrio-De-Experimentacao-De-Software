@@ -143,6 +143,13 @@ def AnalyseCode():
 
     analyseDataFile = open(analyseDataFilePath, 'w')
     repositoriesFile = open(repositoryFilePath, 'r')
+    analysedReposFile = open(analysedReposFilePath, 'w')
+
+    # if analysedReposFile.readable():
+    analysedReposFile.write(
+        'nameWithOwner;url;stars;age;releases;pullRequests;primaryLanguage;cbo;dit;lcom\n')
+    analysedReposFile.flush()
+    analysedReposFile.close()
 
     lines = analyseDataFile.readlines() if analyseDataFile.readable() else []
 
