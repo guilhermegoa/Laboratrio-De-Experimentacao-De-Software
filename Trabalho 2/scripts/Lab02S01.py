@@ -194,6 +194,8 @@ def AnalyseCode():
 
         AnalysedJavaRepo(repoData)
 
+        os.rmdir('files/analyses/' + repositoryName)
+
         try:
             analyseDataFile = open(analyseDataFilePath, 'w')
             analyseDataFile.write(
