@@ -24,6 +24,7 @@ import argparse
 import json
 import subprocess
 import math
+import shutil
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--token', help='token help', required=True)
@@ -142,15 +143,16 @@ def AnalyseCode():
     lastRepoReadLineNumber = 0
     lastRepoReadLineNumberKey = 'lastRepoReadLineNumberKey'
 
-    analyseDataFile = open(analyseDataFilePath, 'w')
+    analyseDataFile = open(analyseDataFilePath, 'r+')
     repositoriesFile = open(repositoryFilePath, 'r')
-    analysedReposFile = open(analysedReposFilePath, 'w')
 
-    # if analysedReposFile.readable():
-    analysedReposFile.write(
-        'nameWithOwner;url;stars;age;releases;pullRequests;primaryLanguage;cbo;dit;lcom\n')
-    analysedReposFile.flush()
-    analysedReposFile.close()
+    if not os.path.exists(analysedReposFilePath):
+        analysedReposFile = open(analysedReposFilePath, 'w')
+
+        analysedReposFile.write(
+            'nameWithOwner;url;stars;age;releases;pullRequests;primaryLanguage;cbo;dit;lcom\n')
+        analysedReposFile.flush()
+        analysedReposFile.close()
 
     lines = analyseDataFile.readlines() if analyseDataFile.readable() else []
 
@@ -165,7 +167,7 @@ def AnalyseCode():
 
     del repositories[0]
 
-    actualLine = lastRepoReadLineNumber if lastRepoReadLineNumber < (
+    actualLine = lastRepoReadLineNumber + 1 if lastRepoReadLineNumber < (
         repositories.__len__() - 1) else 0
 
     while actualLine < repositories.__len__():
@@ -194,7 +196,7 @@ def AnalyseCode():
 
         AnalysedJavaRepo(repoData)
 
-        os.rmdir('files/analyses/' + repositoryName)
+        shutil.rmtree('files/analyses/' + repositoryName)
 
         try:
             analyseDataFile = open(analyseDataFilePath, 'w')
@@ -230,6 +232,9 @@ def AnalysedJavaRepo(repoData):
         sizeClassReposDIT = classRepos.__len__()
 
         del classRepos[0]
+
+        if classRepos.__len__() == 0:
+            return
 
         for line in classRepos:
             lineArray = line.split(',')
