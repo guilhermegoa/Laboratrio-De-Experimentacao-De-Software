@@ -175,30 +175,30 @@ def AnalyseCode():
         repositoryName = repoData[0].split('/')[1]
         repositoryUrl = repoData[1]
 
-        # Download repository
-        subprocess.call(
-            [
-                'sh',
-                'scripts/get-repository-metrics.sh',
-                repositoryName,
-                repositoryUrl
-            ]
-        )
-
-        # Analyse repository
-        subprocess.call(
-            [
-                'sh',
-                'scripts/analyse-repository.sh',
-                repositoryName
-            ]
-        )
-
-        AnalysedJavaRepo(repoData)
-
-        shutil.rmtree('files/analyses/' + repositoryName)
-
         try:
+            # Download repository
+            subprocess.call(
+                [
+                    'sh',
+                    'scripts/get-repository-metrics.sh',
+                    repositoryName,
+                    repositoryUrl
+                ]
+            )
+
+            # Analyse repository
+            subprocess.call(
+                [
+                    'sh',
+                    'scripts/analyse-repository.sh',
+                    repositoryName
+
+                ]
+            )
+            AnalysedJavaRepo(repoData)
+
+            shutil.rmtree('files/analyses/' + repositoryName)
+
             analyseDataFile = open(analyseDataFilePath, 'w')
             analyseDataFile.write(
                 f'{lastRepoReadLineNumberKey}={actualLine}\n')
