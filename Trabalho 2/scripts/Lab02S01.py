@@ -24,7 +24,6 @@ import argparse
 import json
 import subprocess
 import math
-import shutil
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--token', help='token help', required=True)
@@ -196,8 +195,6 @@ def AnalyseCode():
                 ]
             )
             AnalysedJavaRepo(repoData)
-
-            shutil.rmtree('files/analyses/' + repositoryName)
 
             analyseDataFile = open(analyseDataFilePath, 'w')
             analyseDataFile.write(
