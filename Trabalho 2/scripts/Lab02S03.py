@@ -41,9 +41,9 @@ df_filtered = df[(df["lcom"] < q_hi) & (df["lcom"] > q_low)]
 
 # atividade
 
-r, _ = stats.spearmanr(df_filtered['releases'], df_filtered['lcom'])
-sns.regplot(x="releases", y="lcom", data=df_filtered, ci=25)
-print(f"Spearman's correlation coeficient for releases and lcom r = {r}")
+# r, _ = stats.spearmanr(df_filtered['releases'], df_filtered['lcom'])
+# sns.regplot(x="releases", y="lcom", data=df_filtered, ci=25)
+# print(f"Spearman's correlation coeficient for releases and lcom r = {r}")
 
 # r, _ = stats.spearmanr(df_filtered['releases'], df_filtered['cbo'])
 # sns.regplot(x="releases", y="cbo", data=df_filtered, ci=25)
