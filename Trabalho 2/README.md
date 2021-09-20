@@ -21,7 +21,7 @@ O objetivo deste laboratório é analisar aspectos da qualidade de repositórios
 
 - Rodar comando para inciar ambiente virtual e acessa-lo.
 - 
-    ``python3 - venv .venv``
+    ``python3 -m venv .venv``
     
     ``source .venv/bin/activate``
 

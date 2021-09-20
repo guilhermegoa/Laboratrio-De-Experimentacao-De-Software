@@ -34,8 +34,8 @@ df_filtered = df[(df["lcom"] < q_hi) & (df["lcom"] > q_low)]
 # sns.regplot(x="age", y="cbo", data=df_filtered, ci=25)
 # print(f"Coeficiente de correlação de Spearman para age and cbo r = {r}")
 
-# r, _ = stats.spearmanr(df_filtered['age'], df_filtered['dti'])
-# sns.regplot(x="age", y="dti", data=df_filtered, ci=25)
+# r, _ = stats.spearmanr(df_filtered['age'], df_filtered['dit'])
+# sns.regplot(x="age", y="dit", data=df_filtered, ci=25)
 # print(f"Coeficiente de correlação de Spearman para age and dti r = {r}")
 
 
@@ -67,3 +67,5 @@ df_filtered = df[(df["lcom"] < q_hi) & (df["lcom"] > q_low)]
 # r, _ = stats.spearmanr(df_filtered['loc'], df_filtered['dit'])
 # sns.regplot(x="loc", y="dit", data=df_filtered, ci=25)
 # print(f"Coeficiente de correlação de Spearman para loc and dit r = {r}")
+
+# %%

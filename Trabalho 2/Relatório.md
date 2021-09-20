@@ -30,13 +30,13 @@ Após dados filtrados, mapeados e armazenados, utilizamos esses para criar os gr
 
 - **Hipótese**:
 
-Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualidade do código e melhor manutenibilidade e reusabilidade para mais facilitar a distribuição dos esforços entre os colaboradores dos projetos.
+    Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualidade do código e melhor manutenibilidade e reusabilidade para mais facilitar a distribuição dos esforços entre os colaboradores dos projetos.
 
 - **Resultados**:
 
     <div style="text-align: center">
-    Coeficiente de correlação de Spearman para estrelas e lcom r = 0.1580977350487473
     <img src="charts/Q1_stars_lcom.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para estrelas e lcom r = 0.1580977350487473</p>
     </div>
 
     Podemos ver, pelo gráfico, uma tendência de aumento do LCOM em relação ao aumento da quantidade de estrelas, mas observando o coeficiente de correlação, vemos que essa correlação é frágil, pois temos muitos repositórios com quantidades iguais de estrelas e não existe uma certa definição de quantidade de LCOM para estes projetos.
@@ -51,8 +51,8 @@ Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualida
 - **Resultados**:
 
     <div style="text-align: center">
-    Coeficiente de correlação de Spearman para estrelas e cbo r = 0.0250965167242702
     <img src="charts/Q1_stars_cbo.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para estrelas e cbo r = 0.0250965167242702</p>
     </div>
 
     Como resultado, obtemos uma relação insignificante entre esses dois aspectos, mesmo tendo os 5 primeiros repositórios com mais estrelas, com CBO abaixo da média.
@@ -66,8 +66,8 @@ Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualida
 - **Resultados**:
 
     <div style="text-align: center">
-    Coeficiente de correlação de Spearman para estrelas e dit r = -0.042632970959975786
     <img src="charts/Q1_stars_dit.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para estrelas e dit r = -0.042632970959975786</p>
     </div>
 
     Apesar do gráfico exibir uma reta decrescente, assim como na analise anterior com o COB, não podemos afirmar que esse grafico ilustra um correlação direta entre os eixo, mesmo mostrando os 5 repositórios mais populares abaixo da média de DTI. O coeficiente de correlação tbm aponta a desconexão dos dados apresentados.
@@ -79,21 +79,30 @@ Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualida
 - **Hipótese**:
 - **Resultados**:
 
-    <div style="text-align: center"><img src="assets/Q1.png" alt="RQ Q1 Gráfico"></div>
+    <div style="text-align: center">
+    <img src="charts/Q2_age_lcom.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.05665888721051483</p>
+    </div>
 
 ***Idade x CBO***
 
 - **Hipótese**:
 - **Resultados**:
 
-    <div style="text-align: center"><img src="assets/Q1.png" alt="RQ Q1 Gráfico"></div>
+    <div style="text-align: center">
+    <img src="charts/Q2_age_cbo.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.032239205124179965</p>
+    </div>
     
 ***Idade x DIT***
 
 - **Hipótese**:
 - **Resultados**:
 
-    <div style="text-align: center"><img src="assets/Q1.png" alt="RQ Q1 Gráfico"></div>
+    <div style="text-align: center">
+    <img src="charts/Q2_age_dit.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.27201636307400934</p>
+    </div>
 
 ### RQ Q3 - Qual a relação entre a atividade dos repositórios e as suas características de qualidade?  
 
@@ -103,8 +112,8 @@ Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualida
 - **Resultados**:
 
     <div style="text-align: center">
-    Coeficiente de correlação de Spearman para releases and lcom r = 0.29488717154797317
     <img src="charts/Q2_releases_lcom.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.29488717154797317</p>
     </div>
 
 ***Releases x CBO***
@@ -113,8 +122,8 @@ Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualida
 - **Resultados**:
 
     <div style="text-align: center">
-    Coeficiente de correlação de Spearman para releases and cbo r = 0.33164369829958357
     <img src="charts/Q2_releases_cbo.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and cbo r = 0.33164369829958357</p>
     </div>
     
 ***Releases x DIT***
@@ -123,8 +132,8 @@ Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualida
 - **Resultados**:
 
     <div style="text-align: center">
-    Coeficiente de correlação de Spearman para releases and dit r = 0.16922745899406438
     <img src="charts/Q2_releases_dit.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and dit r = 0.16922745899406438</p>
     </div>
 
 ### RQ Q4 - Qual a relação entre o tamanho dos repositórios e as suas características de qualidade?  
@@ -134,18 +143,27 @@ Quanto mais popular, melhor é o LCOM dos repositórios, devido a melhor qualida
 - **Hipótese**:
 - **Resultados**:
 
-    <div style="text-align: center"><img src="assets/Q1.png" alt="RQ Q1 Gráfico"></div>
+    <div style="text-align: center">
+    <img src="charts/Q4_tamanho_lcom.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.9463379680074533</p>
+    </div>
 
 ***LOC x CBO***
 
 - **Hipótese**:
 - **Resultados**:
 
-    <div style="text-align: center"><img src="assets/Q1.png" alt="RQ Q1 Gráfico"></div>
+    <div style="text-align: center">
+    <img src="charts/Q4_tamanho_cbo.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.2969131426139457</p>
+    </div>
     
 ***LOC x DIT***
 
 - **Hipótese**:
 - **Resultados**:
 
-    <div style="text-align: center"><img src="assets/Q1.png" alt="RQ Q1 Gráfico"></div>
+    <div style="text-align: center">
+    <img src="charts/Q4_tamanho_dit.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.2177807637921991</p>
+    </div>
