@@ -20,7 +20,11 @@ Neste contexto, o objetivo deste laboratório é analisar aspectos da qualidade 
 
 Para obtermos os dados a serem avaliados, buscamos da API GraphQL do GitHub os repositórios ordenados em ordem decrescente pela quantidade de estrelas da linguagem **java**, listados em páginas de 100 items, assim, pegaremos as 10 primeiras páginas com os dados necessários para respondermos as questões de pesquisa.Após o recebimento dos dados, será filtrado os dados inconsistentes e salvo o resultado em um arquivo CSV. Dessa forma, será feito um clone de cada repositorio java listado e salvo. Com isso, será rodado o projeto de análise de CK, o qual gera os arquivos de analise de metricas. Após esse passo, será construido um aquivos csv com um mescla dos resultados analisado necessários para o trabalho e os dados necessários de cada repositório.
 
-Por fim, após os dados necessários salvos, torna-se viavel a construção dos gráficos que ilustram os valores obtidos com os quais chegaremos as respostas.
+Por fim, após os dados necessários salvos, torna-se viavel a construção dos gráficos construidos com as bibliotecas pandas e seaborn que ilustram os valores obtidos com os quais serão feitos as análises.
+
+<div style="text-align: center">
+<img src="images/metodologia.png" alt="Metologia">
+</div>
 
 ---
 
@@ -82,7 +86,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q2_age_lcom.png" alt="RQ Q1 Gráfico">
+    <img src="charts/Q2_age_lcom.png" alt="RQ Q2 Gráfico">
     <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.05665888721051483</p>
     </div>
 
@@ -92,7 +96,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q2_age_cbo.png" alt="RQ Q1 Gráfico">
+    <img src="charts/Q2_age_cbo.png" alt="RQ Q2 Gráfico">
     <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.032239205124179965</p>
     </div>
     
@@ -102,7 +106,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q2_age_dit.png" alt="RQ Q1 Gráfico">
+    <img src="charts/Q2_age_dit.png" alt="RQ Q2 Gráfico">
     <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.27201636307400934</p>
     </div>
 
@@ -146,7 +150,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q4_tamanho_lcom.png" alt="RQ Q1 Gráfico">
+    <img src="charts/Q4_tamanho_lcom.png" alt="RQ Q4 Gráfico">
     <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.9463379680074533</p>
     </div>
 
@@ -156,7 +160,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q4_tamanho_cbo.png" alt="RQ Q1 Gráfico">
+    <img src="charts/Q4_tamanho_cbo.png" alt="RQ Q4 Gráfico">
     <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.2969131426139457</p>
     </div>
     
@@ -166,6 +170,6 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q4_tamanho_dit.png" alt="RQ Q1 Gráfico">
+    <img src="charts/Q4_tamanho_dit.png" alt="RQ Q4 Gráfico">
     <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.2177807637921991</p>
     </div>
