@@ -16,6 +16,11 @@ q_low_dit = df["dit"].quantile(0.1)
 q_hi_dit = df["dit"].quantile(0.9)
 df_for_dit = df[(df["dit"] < q_hi_dit) & (df["dit"] > q_low_dit)]
 
+q_low_releases = df["releases"].quantile(0.1)
+q_hi_releases = df["releases"].quantile(0.9)
+df_for_releases = df[(df["releases"] < q_hi_releases) &
+                     (df["releases"] > q_low_releases)]
+
 
 # popularidade
 
@@ -49,16 +54,16 @@ df_for_dit = df[(df["dit"] < q_hi_dit) & (df["dit"] > q_low_dit)]
 
 # atividade
 
-# r, _ = stats.spearmanr(df_for_lcom['releases'], df_for_lcom['lcom'])
-# sns.regplot(x="releases", y="lcom", data=df_for_lcom, ci=25)
+# r, _ = stats.spearmanr(df_for_releases['releases'], df_for_releases['lcom'])
+# sns.regplot(x="releases", y="lcom", data=df_for_releases, ci=25)
 # print(f"Coeficiente de correlação de Spearman para releases and lcom r = {r}")
 
-# r, _ = stats.spearmanr(df_for_cbo['releases'], df_for_cbo['cbo'])
-# sns.regplot(x="releases", y="cbo", data=df_for_cbo, ci=25)
+# r, _ = stats.spearmanr(df_for_releases['releases'], df_for_releases['cbo'])
+# sns.regplot(x="releases", y="cbo", data=df_for_releases, ci=25)
 # print(f"Coeficiente de correlação de Spearman para releases and cbo r = {r}")
 
-# r, _ = stats.spearmanr(df_for_dit['releases'], df_for_dit['dit'])
-# sns.regplot(x="releases", y="dit", data=df_for_dit, ci=25)
+# r, _ = stats.spearmanr(df_for_releases['releases'], df_for_releases['dit'])
+# sns.regplot(x="releases", y="dit", data=df_for_releases, ci=25)
 # print(f"Coeficiente de correlação de Spearman para releases and dit r = {r}")
 
 

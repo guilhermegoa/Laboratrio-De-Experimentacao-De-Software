@@ -112,35 +112,38 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
 ### RQ Q3 - Qual a relação entre a atividade dos repositórios e as suas características de qualidade?  
 
-***Releases x Lcom***
-
 - **Hipótese**:
+
+    Acreditando que a métrica de release seja um valor que mostra a taxa de atualização de código, podemos esperar que todos os índices de qualidade de código reflitam essa melhoria, já que quanto mais o projeto é atualizado mais o código é melhorado.
+
 - **Resultados**:
+
+    ***Releases x Lcom***
 
     <div style="text-align: center">
     <img src="charts/Q3_releases_lcom.png" alt="RQ Q1 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.29488717154797317</p>
+    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.3580470634144376</p>
     </div>
 
-***Releases x CBO***
+    Vemos qie apesar de existir um reta que aponta a tendência, temos um coeficiente de correlação baixo para dizer que a quantidade de releases interfere na métrica de LCOM.
 
-- **Hipótese**:
-- **Resultados**:
+    ***Releases x CBO***
 
     <div style="text-align: center">
     <img src="charts/Q3_releases_cbo.png" alt="RQ Q1 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and cbo r = 0.23914772455719774</p>
+    <p>Coeficiente de correlação de Spearman para releases and cbo r = 0.2657982980485922</p>
     </div>
-    
-***Releases x DIT***
 
-- **Hipótese**:
-- **Resultados**:
+    Apesar de existir uma leve tendência de aumento do CBO, não podemos afirmar que esteja correlacionado com a quantidade de releases de um repositório, devido ao coeficiente de correlação de Spearman.
+
+    ***Releases x DIT***
 
     <div style="text-align: center">
     <img src="charts/Q3_releases_dit.png" alt="RQ Q1 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and dit r = 0.09810236267773546</p>
+    <p>Coeficiente de correlação de Spearman para releases and dit r = 0.08469757952561427</p>
     </div>
+
+    Com o resultado obtido não é possível correlacionar as métricas de quantidade de release e DIT.
 
 ### RQ Q4 - Qual a relação entre o tamanho dos repositórios e as suas características de qualidade?  
 
