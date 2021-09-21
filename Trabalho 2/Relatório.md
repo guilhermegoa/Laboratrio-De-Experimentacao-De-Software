@@ -58,7 +58,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
     <div style="text-align: center">
     <img src="charts/Q1_stars_cbo.png" alt="RQ Q1 Gráfico">
-    <p>Coeficiente de correlação de Spearman para estrelas e cbo r = 0.0250965167242702</p>
+    <p>Coeficiente de correlação de Spearman para estrelas e cbo r = 0.01114985741684774</p>
     </div>
 
     Como resultado, obtemos uma relação insignificante entre esses dois aspectos, mesmo tendo os 5 primeiros repositórios com mais estrelas, com CBO abaixo da média.
@@ -73,7 +73,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
     <div style="text-align: center">
     <img src="charts/Q1_stars_dit.png" alt="RQ Q1 Gráfico">
-    <p>Coeficiente de correlação de Spearman para estrelas e dit r = -0.042632970959975786</p>
+    <p>Coeficiente de correlação de Spearman para estrelas e dit r = -0.010310920299837729</p>
     </div>
 
     Apesar do gráfico exibir uma reta decrescente, assim como na analise anterior com o COB, não podemos afirmar que esse grafico ilustra um correlação direta entre os eixo, mesmo mostrando os 5 repositórios mais populares abaixo da média de DTI. O coeficiente de correlação tbm aponta a desconexão dos dados apresentados.
@@ -97,7 +97,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
     <div style="text-align: center">
     <img src="charts/Q2_age_cbo.png" alt="RQ Q2 Gráfico">
-    <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.032239205124179965</p>
+    <p>Coeficiente de correlação de Spearman para age and cbo r = 0.04701408861603262</p>
     </div>
     
 ***Idade x DIT***
@@ -107,7 +107,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
     <div style="text-align: center">
     <img src="charts/Q2_age_dit.png" alt="RQ Q2 Gráfico">
-    <p>Coeficiente de correlação de Spearman para estrelas e dit r = 0.27201636307400934</p>
+    <p>Coeficiente de correlação de Spearman para age and dti r = 0.19844914547241582</p>
     </div>
 
 ### RQ Q3 - Qual a relação entre a atividade dos repositórios e as suas características de qualidade?  
@@ -118,7 +118,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q2_releases_lcom.png" alt="RQ Q1 Gráfico">
+    <img src="charts/Q3_releases_lcom.png" alt="RQ Q1 Gráfico">
     <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.29488717154797317</p>
     </div>
 
@@ -128,8 +128,8 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q2_releases_cbo.png" alt="RQ Q1 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and cbo r = 0.33164369829958357</p>
+    <img src="charts/Q3_releases_cbo.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and cbo r = 0.23914772455719774</p>
     </div>
     
 ***Releases x DIT***
@@ -138,8 +138,8 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 - **Resultados**:
 
     <div style="text-align: center">
-    <img src="charts/Q2_releases_dit.png" alt="RQ Q1 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and dit r = 0.16922745899406438</p>
+    <img src="charts/Q3_releases_dit.png" alt="RQ Q1 Gráfico">
+    <p>Coeficiente de correlação de Spearman para releases and dit r = 0.09810236267773546</p>
     </div>
 
 ### RQ Q4 - Qual a relação entre o tamanho dos repositórios e as suas características de qualidade?  
@@ -151,7 +151,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
     <div style="text-align: center">
     <img src="charts/Q4_tamanho_lcom.png" alt="RQ Q4 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.9463379680074533</p>
+    <p>Coeficiente de correlação de Spearman para loc and lcom r = 0.9463379680074533</p>
     </div>
 
 ***LOC x CBO***
@@ -161,7 +161,7 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
     <div style="text-align: center">
     <img src="charts/Q4_tamanho_cbo.png" alt="RQ Q4 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.2969131426139457</p>
+    <p>Coeficiente de correlação de Spearman para loc and cbo r = 0.3074195157748057</p>
     </div>
     
 ***LOC x DIT***
@@ -171,5 +171,5 @@ Por fim, após os dados necessários salvos, torna-se viavel a construção dos 
 
     <div style="text-align: center">
     <img src="charts/Q4_tamanho_dit.png" alt="RQ Q4 Gráfico">
-    <p>Coeficiente de correlação de Spearman para releases and lcom r = 0.2177807637921991</p>
+    <p>Coeficiente de correlação de Spearman para loc and dit r = 0.2116342579005864</p>
     </div>
