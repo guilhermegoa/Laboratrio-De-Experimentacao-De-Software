@@ -1,0 +1,22 @@
+{
+  "name": "trabalho-5",
+  "version": "1.0.0",
+  "description": "Trabalho de laboratorio ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermegoa/Laboratrio-De-Experimentacao-De-Software.git"
+  },
+  "author": "Arthur Rocha Amaral e Guilherme Oliveira Antônio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilhermegoa/Laboratrio-De-Experimentacao-De-Software/issues"
+  },
+  "homepage": "https://github.com/guilhermegoa/Laboratrio-De-Experimentacao-De-Software#readme",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
