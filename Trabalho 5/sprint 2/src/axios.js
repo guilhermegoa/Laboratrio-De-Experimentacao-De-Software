@@ -16,7 +16,7 @@ instance.interceptors.response.use((response) => {
     return response;
 })
 
-const TOKEN = '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';
+const TOKEN = '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';
 
 instance.defaults.headers.authorization = `Bearer ${TOKEN}`;
 

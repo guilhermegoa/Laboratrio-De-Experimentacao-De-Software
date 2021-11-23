@@ -4,6 +4,7 @@
   "description": "Trabalho de laboratorio ",
   "main": "index.js",
   "scripts": {
+    "get-graph-ql": "node .\\src\\requestGitHubAPiGraphQL.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
