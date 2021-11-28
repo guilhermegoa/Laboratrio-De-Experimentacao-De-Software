@@ -94,6 +94,8 @@ Pensando nos riscos do experimento, observamos possíveis ameaças à validade d
 
 ## Metologia
 
+Para se obter os dados que serão avaliados, foi buscado da API GraphQL e na API Rest do GitHub no repositorio **`elixir-lang/elixir`** todos os usuário que deram estrelas. Dessa forma, forma para consolidar nossa hipotese foram pegos da requisição o *Content-lenght*(que é o tamanho do corpo da resposta em bytes) e o tempo de inicio ao o fim da requisição, os quais foram salvos em um arquivo csv. Com esses, dados será gerado as metricas para comparação e diferenciação das perguntas feitas. Além disso, sera criado graficos como os dados salvos para a melhor visualização e comparação das Apis GraphQl e Rest.
+
 ---
 
 ## Resultados Obtidos
@@ -105,3 +107,5 @@ Pensando nos riscos do experimento, observamos possíveis ameaças à validade d
 ---
 
 ## Discussão
+
+
