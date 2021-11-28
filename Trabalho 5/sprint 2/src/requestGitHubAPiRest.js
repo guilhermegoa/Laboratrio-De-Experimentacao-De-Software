@@ -1,7 +1,7 @@
 const fs = require('fs');
 const api = require('./axios');
 
-async function requestGitHubAPiRest() {
+const requestGitHubAPiRest = async () => {
     const PERPAGE = 100;
     let lastPage = 0;
     let requestTime = []; // time on milliseconds
@@ -23,7 +23,7 @@ async function requestGitHubAPiRest() {
     console.log('End requests')
 
     const fileName = 'restData'
-    const headerFile = 'currentPage,requestTime,contentLength\n'
+    const headerFile = 'currentPage,requestTime,contentLength,type\n'
 
     const stream = fs.createWriteStream(`files/${fileName}.csv`)
 
@@ -31,9 +31,8 @@ async function requestGitHubAPiRest() {
 
     for (let page = 0; page < lastPage; page++) {
         let currentPage = page + 1
-        stream.write(`${currentPage},${requestTime[page]},${contentLength[page]}\n`)
+        stream.write(`${currentPage},${requestTime[page]},${contentLength[page]},rest\n`)
     }
-
 }
 
-requestGitHubAPiRest();
+module.exports = requestGitHubAPiRest

@@ -21,7 +21,7 @@ const repositoryStargazersQuery = `query ($cursor: String, $itemsPerPage: Int) {
   }
 }`
 
-async function requestGitHubAPiRest() {
+const requestGitHubAPiGraphQL = async () => {
     const PER_PAGE = 100;
     let requestTime = []; // time on milliseconds
     let contentLength = []; // size on bytes
@@ -62,7 +62,7 @@ async function requestGitHubAPiRest() {
 
 
     const fileName = 'graphQLData'
-    const headerFile = 'currentPage,requestTime,contentLength\n'
+    const headerFile = 'currentPage,requestTime,contentLength,type\n'
 
     const stream = fs.createWriteStream(`files/${fileName}.csv`)
 
@@ -70,9 +70,9 @@ async function requestGitHubAPiRest() {
 
     for (let i = 0; i < page; i++) {
         let currentPage = i + 1
-        stream.write(`${currentPage},${requestTime[i]},${contentLength[i]}
+        stream.write(`${currentPage},${requestTime[i]},${contentLength[i]},graphql
         `)
     }
 }
 
-requestGitHubAPiRest();
+module.exports = requestGitHubAPiGraphQL

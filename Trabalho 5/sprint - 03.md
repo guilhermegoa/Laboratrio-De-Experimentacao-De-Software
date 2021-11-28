@@ -107,5 +107,3 @@ Para se obter os dados que serão avaliados, foi buscado da API GraphQL e na API
 ---
 
 ## Discussão
-
-
