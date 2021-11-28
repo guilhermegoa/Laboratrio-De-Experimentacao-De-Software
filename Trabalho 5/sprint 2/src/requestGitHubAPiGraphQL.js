@@ -1,6 +1,5 @@
 const fs = require('fs');
-const gitHubGraphQlApi = require('./axios');
-const replaceAll = require('./utils/strings-replace-all')
+const gitHubGraphQlApi = require('./client/githubApiClient');
 
 const repositoryStargazersQuery = `query ($cursor: String, $itemsPerPage: Int) {
       repository(owner: "elixir-lang", name: "elixir") {

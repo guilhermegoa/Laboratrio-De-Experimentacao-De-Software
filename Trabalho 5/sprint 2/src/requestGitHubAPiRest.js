@@ -1,5 +1,5 @@
 const fs = require('fs');
-const api = require('./axios');
+const api = require('./client/githubApiClient');
 
 const requestGitHubAPiRest = async () => {
     const PERPAGE = 100;
