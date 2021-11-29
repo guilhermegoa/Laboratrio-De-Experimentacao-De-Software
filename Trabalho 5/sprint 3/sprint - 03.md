@@ -94,7 +94,7 @@ Pensando nos riscos do experimento, observamos possíveis ameaças à validade d
 
 ## Metologia
 
-Para se obter os dados que serão avaliados, foi buscado da API GraphQL e na API Rest do GitHub no repositorio **`elixir-lang/elixir`** todos os usuário que deram estrelas. Dessa forma, forma para consolidar nossa hipotese foram pegos da requisição o *Content-lenght*(que é o tamanho do corpo da resposta em bytes) e o tempo de inicio ao o fim da requisição, os quais foram salvos em um arquivo csv. Com esses, dados será gerado as metricas para comparação e diferenciação das perguntas feitas. Além disso, sera criado graficos como os dados salvos para a melhor visualização e comparação das Apis GraphQl e Rest.
+Para se obter os dados que serão avaliados, foi buscado da API GraphQL e na API Rest do GitHub no repositorio **`elixir-lang/elixir`** todos os usuário que deram estrelas. Dessa forma, forma para consolidar nossa hipotese foram pegos da requisição o *Content-lenght*(que é o tamanho do corpo da resposta em bytes) e o tempo de inicio ao o fim da requisição, os quais foram salvos em um arquivo csv. Com esses, dados será gerado as metricas para comparação e diferenciação das perguntas feitas. Além disso, sera criado graficos em escala logaritmica como os dados salvos para a melhor visualização e comparação das Apis GraphQl e Rest.
 
 ---
 
@@ -102,8 +102,30 @@ Para se obter os dados que serão avaliados, foi buscado da API GraphQL e na API
 
 ### RQ1. Respostas à consultas GraphQL são mais rápidas que respostas à consultas REST?
 
+| Tipo da API | Mediana em milissegundos |
+| ----------- | ------------------------ |
+| graphql     | 593                      |
+| rest        | 448                      |
+
+<div style="text-align: center"><img src="charts/requestTime.jpeg" alt="RQ Q1 Gráfico"></div>
+
+Como pode ser visto no *blox plot* o rest está sendo mais rapido que o GraphQl, com o valor mediano em milissegundos de 448 em Rest e 558 em GraphQl. Dessa forma, para o melhor entendimento do motivo desse comportamento, foi necessario entender o funcionamento do GraphQl onde para cada requisição e necessario processamento para buscar apenas as propriedades solicitadas. Esse pode ser o motivo do tempo em GraphQl ser maior que o tempo em Rest.
+
 ### RQ2. Respostas à consultas GraphQL tem tamanho menor que respostas à consultas REST?
+
+| Tipo da API | Mediana em Bytes |
+| ----------- | ---------------- |
+| graphql     | 22678            |
+| rest        | 91649            |
+
+<div style="text-align: center"><img src="charts/contentLength.jpeg" alt="RQ Q1 Gráfico"></div>
+
+As resposta da consulta de GraphQl são menores que as de rest com os valor mediano em bytes de 22678 bytes para GraphQl e de 91649 para Rest. Isso acontece, pois no GraphQl as propriedades que vem no corpo da requisição são apenas aquelas que são solicitadas, desse modo o tamanho da requisição se torna menor em relação a Rest, a qual tras no corpo da requisição todos os dados definidos para um *end point*. 
 
 ---
 
 ## Discussão
+
+Como pode ser observado na seção anterior, os dados requisitados na API REST são de certa forma mais pesados, pois eles trazem o conteúdo textual maior com as referencias para os endpoints da API onde se encontram demais atributos do objeto solicitado, como por exemplo ao buscar um usuário, na resposta vem tambem a referencia para o endpoint de repositorios que tem um relacionamento de um para muitos com o usuário, por isso exige outro endpoint para buscar a lista de repositórios daquele usuário, gerando então uma sobrecarga das requisições com dados que não fazem parte diretamente da entidade solicitada.
+
+Sobretudo, mesmo com os dados da API GraphQL sendo mais objetivos, o tempo gasto por esta tecnologia é maior devido ao esforço computacional exigido para encontrar os itens em questão, sendo assim podemos concluir que mesmo que a API REST traga dados "desnecessários", o tempo gasto para retorna-los ao usuário é bem menor devido a facilidade de encontrar tais dados nas bases, tornando também a consulta de dados com poucos níveis mais fáceis.
