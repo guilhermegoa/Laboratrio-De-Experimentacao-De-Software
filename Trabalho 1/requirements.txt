@@ -1,4 +1,4 @@
-aiohttp==3.7.4.post0
+aiohttp==3.8.0.post0
 async-timeout==3.0.1
 asyncio==3.4.3
 attrs==21.2.0
@@ -12,5 +12,5 @@ multidict==5.1.0
 requests==2.26.0
 typing-extensions==3.10.0.0
 urllib3==1.26.6
-websockets==9.1
+websockets==10.0
 yarl==1.6.3
